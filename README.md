@@ -4,7 +4,6 @@
   <em>(Projeto vinculado ao PETi - Instituto Federal do Triângulo Mineiro, Campus Patrocínio).</em>
 </strong> <br/><br/>
 
-
 <p>
   Este curso foi cuidadosamente projetado para ajudar iniciantes a dar os primeiros passos no mundo da programação competitiva, utilizando a linguagem C++ como ferramenta principal.
 </p>
@@ -29,6 +28,18 @@
 ### Pré-requisitos:
 
 <p>Não é necessário ter experiência prévia em programação, apenas uma vontade de aprender e explorar o mundo da lógica de programação!</p>
+
+---
+
+<!--
+# Patrocinadores
+
+// criar link na imagem redirecionando para as rede do patrocinador.
+
+
+![logo](https://github.com/user-attachments/assets/0f2f9ebd-c417-486e-8638-f9b5cf166889)
+
+-->
 
 ---
 
