@@ -6,18 +6,9 @@ using namespace std;
 
 // Função principal do programa
 int main() {
-    // Declaração de uma variável do tipo inteiro
-    int idade;
-
-    // Saída de dados: exibe uma mensagem ao usuário
-    cout << "Digite sua idade: ";
     
-    // Entrada de dados: captura a idade digitada pelo usuário e armazena na variável `idade`
-    cin >> idade;
-
-    // Exibe o valor armazenado na variável idade
-    cout << idade << endl; 
-
+    cout << "Hello World!" << endl;
+    
     // Retorna 0 para indicar que o programa terminou com sucesso
     return 0;
 }
