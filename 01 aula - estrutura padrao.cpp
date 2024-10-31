@@ -17,6 +17,6 @@ int main() {
 // 1. `#include <iostream>` é a inclusão da biblioteca padrão para entrada e saída.
 // 2. `using namespace std;` simplifica o uso de comandos como `std::cout`.
 // 3. `int main()` é a função principal onde o programa começa a executar.
-// 4. `cout` exibe mensagens no console e `cin` captura o que o usuário digita.
-// 5. `if...else` realiza uma decisão com base no valor inserido pelo usuário.
+// 4. `cout` exibe mensagens no console.
+// 5. `endl` quebra uma linha após imprimir.
 // 6. `return 0;` indica o fim da execução.
