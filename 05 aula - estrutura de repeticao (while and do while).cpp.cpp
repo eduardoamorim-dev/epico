@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 int main() {
@@ -103,3 +104,21 @@ int main() {
 
     return 0;
 }
+
+
+/*
+
+Quando usar do while:
+
+Use a estrutura do while quando você deseja garantir que o bloco de código seja executado pelo menos uma vez, independentemente da condição.
+É útil em situações onde a primeira execução deve ocorrer antes da verificação da condição. 
+
+--
+
+Quando usar while:
+
+Use a estrutura while quando a quantidade de iterações não for conhecida de antemão e depende de uma condição a ser satisfeita.
+É ideal quando você precisa verificar a condição antes de executar o bloco de código.
+
+*/
+
