@@ -113,6 +113,8 @@ Quando usar while:
 Use a estrutura while quando a quantidade de iterações não for conhecida de antemão e depende de uma condição a ser satisfeita.
 É ideal quando você precisa verificar a condição antes de executar o bloco de código.
 
+---
+
 Quando usar do while:
 
 Use a estrutura do while quando você deseja garantir que o bloco de código seja executado pelo menos uma vez, independentemente da condição.
