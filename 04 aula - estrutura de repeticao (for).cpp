@@ -28,3 +28,12 @@ int main() {
     cout << endl; // Pula uma linha após exibir todos os elementos
 
     return 0; // Indica que o programa terminou com sucesso
+
+/*
+
+Quando usar for:
+
+Use a estrutura for quando você souber exatamente quantas vezes deseja repetir um bloco de código.
+É ideal para iterações que envolvem um contador ou quando você está percorrendo elementos de um array ou vetor.
+
+*/
