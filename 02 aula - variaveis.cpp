@@ -73,3 +73,6 @@ int main() {
 
     return 0;
 }
+
+// https://2linguagensprogsi.webnode.page/linguagens/linguagem-c-with-classes/tipos-de-dados-de-c-/
+
