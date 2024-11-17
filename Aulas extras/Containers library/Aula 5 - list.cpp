@@ -1,253 +1,200 @@
 #include <iostream>
 #include <list>
-#include <algorithm>  // Para std::sort, std::reverse
-
+#include <algorithm>
 using namespace std;
 
 int main() {
-
     /*
     ========================================
-    ======= CONCEITO TEÓRICO DA LISTA =======
+    ======= CONCEITO TEÓRICO DA LIST =======
     ========================================
     
-    A `list` em C++ é uma estrutura de dados baseada em uma lista duplamente encadeada. 
-    Cada elemento contém dois ponteiros: um para o próximo e outro para o anterior. 
-    Isso permite inserções e remoções eficientes em qualquer posição da lista.
+    O `std::list` é uma lista duplamente encadeada que permite inserção
+    e remoção eficiente em qualquer posição.
     
     Características:
-    - Acesso sequencial aos elementos.
-    - Inserções e remoções rápidas em qualquer lugar da lista.
-    - Não há acesso aleatório (como em vetores).
+    - Não possui acesso aleatório
+    - Inserção/remoção em qualquer posição é O(1)
+    - Elementos não são armazenados contiguamente
+    - Iteração bidirecional
+    - Não invalidação de iteradores após inserção/remoção
     
     =========================================
-    ======= MÉTODOS DISPONÍVEIS NA LISTA =======
+    ======= MÉTODOS DISPONÍVEIS NA LIST =======
     =========================================
     
-    - `push_back()`: Adiciona um elemento no final.
-    - `push_front()`: Adiciona um elemento no início.
-    - `pop_back()`: Remove o último elemento.
-    - `pop_front()`: Remove o primeiro elemento.
-    - `size()`: Retorna o número de elementos na lista.
-    - `empty()`: Verifica se a lista está vazia.
-    - `front()`: Retorna o primeiro elemento.
-    - `back()`: Retorna o último elemento.
-    - `insert()`: Insere um elemento em uma posição específica.
-    - `erase()`: Remove um elemento de uma posição específica.
-    - `clear()`: Remove todos os elementos da lista.
-    - `splice()`: Move elementos de uma lista para outra.
-    - `remove()`: Remove todas as ocorrências de um valor específico.
-    - `unique()`: Remove elementos duplicados consecutivos.
-    - `sort()`: Ordena os elementos da lista.
-    - `reverse()`: Inverte a ordem dos elementos.
-    - `emplace_back()`: Adiciona um elemento no final de maneira eficiente.
-    - `emplace_front()`: Adiciona um elemento no início de maneira eficiente.
-    - `swap()`: Troca os conteúdos de duas listas.
-    - `merge()`: Mescla duas listas ordenadas.
-    - `begin()`, `end()`, `rbegin()`, `rend()`: Iteradores para percorrer a lista.
-
-    ==========================================
-    ======= ESTRUTURA DA LISTA NO C++ ========
-    ==========================================
+    Elementos:
+    - push_back(): Adiciona no final
+    - push_front(): Adiciona no início
+    - pop_back(): Remove do final
+    - pop_front(): Remove do início
+    - emplace_back(): Constrói no final
+    - emplace_front(): Constrói no início
+    - emplace(): Constrói em posição específica
     
-    // Declaração de uma lista:
-    // list<tipo do elemento> nomeDaLista;
+    Acesso:
+    - front(): Primeiro elemento
+    - back(): Último elemento
     
+    Iteradores:
+    - begin(), end()
+    - rbegin(), rend()
+    - cbegin(), cend()
+    - crbegin(), crend()
+    
+    Capacidade:
+    - empty(): Verifica se está vazia
+    - size(): Número de elementos
+    - max_size(): Tamanho máximo possível
+    
+    Modificadores:
+    - assign(): Atribui novos elementos
+    - insert(): Insere elementos
+    - erase(): Remove elementos
+    - clear(): Remove todos elementos
+    - resize(): Altera o tamanho
+    
+    Operações Específicas:
+    - splice(): Move elementos de outra list
+    - remove(): Remove elementos por valor
+    - remove_if(): Remove elementos por condição
+    - unique(): Remove elementos duplicados
+    - merge(): Mescla duas lists ordenadas
+    - sort(): Ordena elementos
+    - reverse(): Inverte a ordem
     */
-
-    list<int> lst;  // Criação de uma lista de inteiros
-
+    
     // ================================================
-    // Adicionar elementos na lista
+    // Criação e Operações Básicas
     // ================================================
-
-    // Adicionando elementos no final da lista - método .push_back();
-    lst.push_back(10);
-    lst.push_back(20);
-    lst.push_back(30);
-
-    // Adicionando elementos no início da lista - método .push_front();
-    lst.push_front(5);  // Adiciona 5 ao início da lista
-
-    // Exibindo os elementos da lista após inserções
-    cout << "Elementos após push_back() e push_front(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
+    list<int> lst;
+    
+    // Inserções
+    lst.push_back(30);     // [30]
+    lst.push_front(10);    // [10, 30]
+    lst.push_back(40);     // [10, 30, 40]
+    lst.push_front(5);     // [5, 10, 30, 40]
+    
+    cout << "Lista após inserções básicas: ";
+    for (const auto& elem : lst) cout << elem << " ";
     cout << endl;
-
+    
     // ================================================
-    // Remover elementos da lista
+    // Acesso aos Elementos
     // ================================================
-
-    // Remover o último elemento da lista - método .pop_back();
-    lst.pop_back();
-
-    // Remover o primeiro elemento da lista - método .pop_front();
-    lst.pop_front();
-
-    // Exibindo os elementos após remoções
-    cout << "Elementos após pop_back() e pop_front(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
+    cout << "\nAcesso aos elementos:" << endl;
+    cout << "Primeiro elemento (front): " << lst.front() << endl;
+    cout << "Último elemento (back): " << lst.back() << endl;
+    
+    // ================================================
+    // Remoção de Elementos
+    // ================================================
+    lst.pop_front();  // Remove primeiro elemento
+    lst.pop_back();   // Remove último elemento
+    
+    cout << "\nLista após remoções: ";
+    for (const auto& elem : lst) cout << elem << " ";
     cout << endl;
-
+    
     // ================================================
-    // Operações de Tamanho e Verificação
+    // Inserção com emplace
     // ================================================
-
-    // Verificando o tamanho da lista - método .size();
-    cout << "Tamanho da lista: " << lst.size() << endl;
-
-    // Verificando se a lista está vazia - método .empty();
-    if (lst.empty()) {
-        cout << "A lista está vazia." << endl;
-    } else {
-        cout << "A lista não está vazia." << endl;
-    }
-
-    // ================================================
-    // Acessar o primeiro e o último elemento
-    // ================================================
-
-    // Adicionando mais elementos
-    lst.push_back(40);
-    lst.push_back(50);
-    lst.push_back(60);
-
-    // Exibindo o primeiro e o último elemento - métodos .front() e .back();
-    cout << "Primeiro elemento: " << lst.front() << endl;
-    cout << "Último elemento: " << lst.back() << endl;
-
-    // ================================================
-    // Inserir e Remover em posições específicas
-    // ================================================
-
-    // Inserindo um elemento em uma posição específica - método .insert();
-    auto it = lst.begin();  // Obtém o iterador para o primeiro elemento
-    lst.insert(it, 15);  // Adiciona 15 antes do primeiro elemento
-
-    // Exibindo os elementos após a inserção
-    cout << "Elementos após insert(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
+    lst.emplace_front(2);  // Constrói elemento no início
+    lst.emplace_back(50);  // Constrói elemento no final
+    auto it = lst.begin();
+    advance(it, 1);
+    lst.emplace(it, 7);    // Constrói na segunda posição
+    
+    cout << "\nLista após emplace: ";
+    for (const auto& elem : lst) cout << elem << " ";
     cout << endl;
-
-    // Remover um elemento da lista - método .erase();
-    it = lst.begin();
-    lst.erase(it);  // Remove o primeiro elemento
-
-    // Exibindo os elementos após a remoção
-    cout << "Elementos após erase(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
+    
+    // ================================================
+    // Capacidade e Redimensionamento
+    // ================================================
+    cout << "\nInformações de capacidade:" << endl;
+    cout << "Tamanho: " << lst.size() << endl;
+    cout << "Está vazia? " << (lst.empty() ? "Sim" : "Não") << endl;
+    cout << "Tamanho máximo: " << lst.max_size() << endl;
+    
+    lst.resize(8, 100);  // Redimensiona para 8 elementos, preenchendo com 100
+    
+    cout << "\nLista após resize: ";
+    for (const auto& elem : lst) cout << elem << " ";
     cout << endl;
-
+    
     // ================================================
-    // Limpar todos os elementos da lista
+    // Operações Específicas da List
     // ================================================
-
-    // Limpar todos os elementos da lista - método .clear();
-    lst.clear();
-    cout << "Tamanho da lista após clear(): " << lst.size() << endl;
-
-    // ================================================
-    // Operações Avançadas com a Lista
-    // ================================================
-
-    // Recriar a lista com elementos para outros exemplos
-    lst.push_back(10);
-    lst.push_back(20);
-    lst.push_back(30);
-    lst.push_back(40);
-    lst.push_back(50);
-    lst.push_back(20);
-
-    // Remover todas as ocorrências de um valor específico - método .remove();
-    lst.remove(20);  // Remove todas as ocorrências de 20
-    cout << "Elementos após remove(20): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
+    
+    // Remove
+    lst.remove(100);  // Remove todos os elementos com valor 100
+    
+    cout << "\nLista após remove(100): ";
+    for (const auto& elem : lst) cout << elem << " ";
     cout << endl;
-
-    // Remover duplicatas consecutivas - método .unique();
-    lst.push_back(40);
-    lst.push_back(40);
-    lst.unique();  // Remove duplicatas consecutivas
-    cout << "Elementos após unique(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
+    
+    // Remove_if
+    lst.remove_if([](int n) { return n > 30; });  // Remove elementos maiores que 30
+    
+    cout << "Lista após remove_if: ";
+    for (const auto& elem : lst) cout << elem << " ";
     cout << endl;
-
-    // Ordenar a lista - método .sort();
-    lst.sort();
-    cout << "Elementos após sort(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
+    
+    // Unique
+    lst.push_back(2);
+    lst.push_back(2);
+    lst.sort();  // Necessário ordenar antes de unique
+    lst.unique();  // Remove elementos duplicados consecutivos
+    
+    cout << "\nLista após unique: ";
+    for (const auto& elem : lst) cout << elem << " ";
     cout << endl;
-
-    // Reverter a lista - método .reverse();
-    lst.reverse();
-    cout << "Elementos após reverse(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
-    cout << endl;
-
+    
     // ================================================
-    // Adicionar Elementos de Forma Eficiente
+    // Splice
     // ================================================
-
-    // Adicionar elementos no final e no início de maneira eficiente
-    lst.emplace_back(60);  // Adiciona 60 ao final
-    lst.emplace_front(0); // Adiciona 0 ao início
-
-    // Exibindo a lista após emplace
-    cout << "Elementos após emplace_back() e emplace_front(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
-    cout << endl;
-
-    // ================================================
-    // Trocar Conteúdos de Duas Listas
-    // ================================================
-
     list<int> lst2 = {100, 200, 300};
-    lst.swap(lst2);  // Troca os conteúdos das duas listas
-    cout << "Elementos após swap(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
+    
+    cout << "\nAntes do splice:" << endl;
+    cout << "lst: ";
+    for (const auto& elem : lst) cout << elem << " ";
+    cout << "\nlst2: ";
+    for (const auto& elem : lst2) cout << elem << " ";
+    
+    lst.splice(lst.begin(), lst2);  // Move todos elementos de lst2 para o início de lst
+    
+    cout << "\n\nDepois do splice:" << endl;
+    cout << "lst: ";
+    for (const auto& elem : lst) cout << elem << " ";
+    cout << "\nlst2 (vazia): ";
+    for (const auto& elem : lst2) cout << elem << " ";
     cout << endl;
-
+    
     // ================================================
-    // Mesclar Duas Listas Ordenadas
+    // Merge
     // ================================================
-
-    lst.push_back(400);
-    lst.push_back(500);
-    lst2.push_back(50);
-    lst2.push_back(150);
-    lst.merge(lst2);  // Mescla lst2 em lst de forma ordenada
-    cout << "Elementos após merge(): ";
-    for (int elem : lst) {
-        cout << elem << " ";
-    }
+    list<int> lst3 = {1, 3, 5};
+    list<int> lst4 = {2, 4, 6};
+    
+    lst3.merge(lst4);  // Mescla lst4 em lst3 (ambas devem estar ordenadas)
+    
+    cout << "\nLista após merge: ";
+    for (const auto& elem : lst3) cout << elem << " ";
     cout << endl;
-
+    
     // ================================================
-    // Iteradores para Percorrer a Lista
+    // Sort e Reverse
     // ================================================
-
-    cout << "Primeiro elemento com begin(): " << *lst.begin() << endl;
-    cout << "Último elemento com rbegin(): " << *lst.rbegin() << endl;
-
+    lst.sort();  // Ordena a lista
+    cout << "\nLista após sort: ";
+    for (const auto& elem : lst) cout << elem << " ";
+    cout << endl;
+    
+    lst.reverse();  // Inverte a ordem
+    cout << "Lista após reverse: ";
+    for (const auto& elem : lst) cout << elem << " ";
+    cout << endl;
+    
     return 0;
 }
