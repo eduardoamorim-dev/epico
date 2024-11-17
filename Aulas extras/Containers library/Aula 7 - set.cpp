@@ -1,6 +1,7 @@
 #include <iostream>
 #include <set>
 #include <string>
+
 using namespace std;
 
 // Estrutura personalizada para demonstrar set com objetos complexos
