@@ -7,7 +7,7 @@ using namespace std;
 int main() {
     /*
     ========================================
-    ======= CONCEITO TEÓRICO DO ARRAY =======
+            CONCEITO TEÓRICO DO ARRAY 
     ========================================
     
     O `std::array` é um container que encapsula arrays de tamanho fixo.
