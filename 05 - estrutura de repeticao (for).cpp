@@ -8,7 +8,6 @@ int main() {
         cout << "Número: " << i << endl; // Exibe o valor de i
     }
 
-
     // Definindo um array de inteiros com 5 elementos
     int numeros[5] = {5, 10, 15, 20, 25}; // Inicializa o array com valores
     
