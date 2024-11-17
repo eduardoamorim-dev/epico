@@ -1,0 +1,56 @@
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main() {
+    
+    /*
+    ======== conceito teórico =========
+    
+    O set é uma estrutura de dados que armazena elementos únicos e os mantém ordenados automaticamente.
+    
+    ======== métodos =========
+    
+    insert().
+    erase().
+    find().
+    size().
+    empty().
+    
+    ======== estrutura =========
+    
+    // set<tipo do set> nomeDoSet */
+    
+    set<int> s;
+    
+    // adicionar elementos no set - método .insert();
+    
+    s.insert(10);
+    s.insert(20);
+    s.insert(10); // não será adicionado novamente
+    
+    // verificar se um elemento está no set - método .find();
+    
+    if(s.find(20) != s.end()) {
+        cout << "Elemento 20 encontrado." << endl;
+    }
+    
+    // remover um elemento do set - método .erase();
+    
+    s.erase(10);
+    
+    // verificar o tamanho do set - método .size();
+    
+    cout << "Tamanho do set: " << s.size() << endl;
+    
+    // verificar se o set está vazio - método .empty()
+    
+    if(s.empty()) {
+        cout << "Set vazio." << endl;
+    } else {
+        cout << "O set possui " << s.size() << " elementos." << endl;
+    }
+    
+    return 0;
+}
