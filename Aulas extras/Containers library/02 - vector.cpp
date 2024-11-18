@@ -1,80 +1,179 @@
 #include <iostream>
-#include <vector> 
-
+#include <vector>
 using namespace std;
 
 int main() {
-    
     /*
-    ======== conceito teórico =========
+    ========================================
+    ======= CONCEITO TEÓRICO DO VECTOR =======
+    ========================================
     
-    O vetor é uma estrutura de dados que armazena elementos de forma sequencial. 
-    Ele possui capacidade dinâmica, ou seja, pode crescer e diminuir conforme necessário. 
-    A diferença principal entre o vetor e a fila é que, no vetor, os elementos podem ser acessados diretamente por seu índice, enquanto na fila, o acesso segue a ordem de inserção (FIFO).
+    O std::vector é um container sequencial que:
+    - Armazena elementos em memória contígua
+    - Oferece acesso aleatório O(1) aos elementos
+    - Crescimento dinâmico automático
+    - Inserção/remoção no final O(1) amortizado
+    - Inserção/remoção no meio O(n)
+    - Realoca memória automaticamente quando necessário
     
-     ======== métodos =========
-     
-     push_back(). 
-     pop_back().
-     size().
-     empty().
-     at().
-     front().
-     back().
-     clear().
-     
-     ======== estrutura =========
+    =========================================
+    ======= MÉTODOS DISPONÍVEIS NO VECTOR =======
+    =========================================
     
-    // vector<tipo do vetor> nomeDoVetor */
+    Construtores:
+    - vector<T>: Construtor padrão
+    - vector<T>(n): n elementos default
+    - vector<T>(n, val): n elementos com valor val
+    - vector<T>(first, last): Range de elementos
     
-    vector<string> cartas;
+    Elemento e Acesso:
+    - at(pos): Acesso com verificação de limites
+    - operator[]: Acesso direto sem verificação
+    - front(): Primeiro elemento
+    - back(): Último elemento
+    - data(): Ponteiro para dados internos
     
+    Iteradores:
+    - begin(), end()
+    - rbegin(), rend()
+    - cbegin(), cend()
+    - crbegin(), crend()
+    
+    Capacidade:
+    - empty(): Verifica se vazio
+    - size(): Número de elementos
+    - max_size(): Tamanho máximo possível
+    - capacity(): Capacidade atual
+    - reserve(n): Reserva espaço
+    - shrink_to_fit(): Reduz capacidade ao tamanho
+    
+    Modificadores:
+    - push_back(): Adiciona no final
+    - pop_back(): Remove do final
+    - insert(): Insere elementos
+    - emplace(): Constrói elemento in-place
+    - emplace_back(): Constrói no final
+    - erase(): Remove elementos
+    - clear(): Remove todos elementos
+    - resize(): Altera tamanho
+    */
+    
+    // ================================================
+    // Criação e Operações Básicas
+    // ================================================
+    vector<int> vec;
+    
+    // Demonstração de inserção
+    cout << "1. OPERAÇÕES DE INSERÇÃO:" << endl;
+    
+    // push_back
+    vec.push_back(10);
+    vec.push_back(20);
+    vec.push_back(30);
+    cout << "- Após push_back: ";
+    for(const auto& elem : vec) cout << elem << " ";
+    cout << endl;
+    
+    // emplace_back (mais eficiente que push_back)
+    vec.emplace_back(40);
+    cout << "- Após emplace_back: ";
+    for(const auto& elem : vec) cout << elem << " ";
+    cout << endl;
+    
+    // ================================================
+    // Acesso aos Elementos
+    // ================================================
+    cout << "\n2. ACESSO AOS ELEMENTOS:" << endl;
+    
+    // Diferentes formas de acesso
+    cout << "- Primeiro elemento (front): " << vec.front() << endl;
+    cout << "- Último elemento (back): " << vec.back() << endl;
+    cout << "- Elemento índice 2 (at): " << vec.at(2) << endl;
+    cout << "- Elemento índice 1 ([]) : " << vec[1] << endl;
+    
+    // ================================================
+    // Capacidade e Tamanho
+    // ================================================
+    cout << "\n3. INFORMAÇÕES DE CAPACIDADE:" << endl;
+    cout << "- Tamanho: " << vec.size() << endl;
+    cout << "- Capacidade: " << vec.capacity() << endl;
+    cout << "- Está vazio? " << (vec.empty() ? "Sim" : "Não") << endl;
+    
+    // Demonstração de reserve
+    vec.reserve(10);
+    cout << "- Capacidade após reserve(10): " << vec.capacity() << endl;
+    
+    // ================================================
+    // Modificadores
+    // ================================================
+    cout << "\n4. OPERAÇÕES DE MODIFICAÇÃO:" << endl;
+    
+    // insert
+    vec.insert(vec.begin() + 2, 25);
+    cout << "- Após insert(2, 25): ";
+    for(const auto& elem : vec) cout << elem << " ";
+    cout << endl;
+    
+    // erase
+    vec.erase(vec.begin() + 1);
+    cout << "- Após erase do segundo elemento: ";
+    for(const auto& elem : vec) cout << elem << " ";
+    cout << endl;
+    
+    // resize
+    vec.resize(6, 100);  // Aumenta tamanho para 6, preenchendo com 100
+    cout << "- Após resize(6, 100): ";
+    for(const auto& elem : vec) cout << elem << " ";
+    cout << endl;
+    
+    // ================================================
+    // Iteração
+    // ================================================
+    cout << "\n5. DIFERENTES FORMAS DE ITERAÇÃO:" << endl;
+    
+    // Forward iteration
+    cout << "- Iteração normal: ";
+    for(auto it = vec.begin(); it != vec.end(); ++it) {
+        cout << *it << " ";
+    }
+    cout << endl;
+    
+    // Reverse iteration
+    cout << "- Iteração reversa: ";
+    for(auto it = vec.rbegin(); it != vec.rend(); ++it) {
+        cout << *it << " ";
+    }
+    cout << endl;
+    
+    // ================================================
+    // Operações com Algoritmos STL
+    // ================================================
+    cout << "\n6. OPERAÇÕES COM ALGORITMOS:" << endl;
+    
+    // sort
+    sort(vec.begin(), vec.end());
+    cout << "- Após ordenação: ";
+    for(const auto& elem : vec) cout << elem << " ";
+    cout << endl;
+    
+    // find
+    auto it = find(vec.begin(), vec.end(), 30);
+    if(it != vec.end()) {
+        cout << "- Elemento 30 encontrado na posição: " 
+             << distance(vec.begin(), it) << endl;
+    }
+    
+    // ================================================
+    // Limpeza
+    // ================================================
+    vec.clear();
+    cout << "\n7. APÓS CLEAR:" << endl;
+    cout << "- Tamanho: " << vec.size() << endl;
+    cout << "- Capacidade: " << vec.capacity() << endl;
+    
+    // shrink_to_fit reduz a capacidade ao tamanho atual
+    vec.shrink_to_fit();
+    cout << "- Capacidade após shrink_to_fit: " << vec.capacity() << endl;
 
-    // adicionar elementos no vetor - método .push_back();
-    
-    cartas.push_back("Rei de copas"); // Adiciona "Rei de copas" no final do vetor
-    cartas.push_back("Rei de espadas");
-    cartas.push_back("Rei de ouro");
-    cartas.push_back("Rei de paus"); // Adiciona "Rei de paus" no final do vetor
-    
-    
-    // visualizar o primeiro elemento do vetor - método .front()
-    
-    cout << "Primeiro elemento do vetor: " << cartas.front() << endl;
-    
-    // visualizar o último elemento do vetor - método .back()
-    
-    cout << "Último elemento do vetor: " << cartas.back() << endl;
-    
-    // acessar elemento por índice - método .at()
-    
-    cout << "Elemento no índice 2: " << cartas.at(2) << endl;
-    
-    // descobrir tamanho do vetor - método .size()
-    
-    cout << "Tamanho do vetor: " << cartas.size() << endl;
-    
-    // retirar o último elemento do vetor - método .pop_back();
-    
-    cartas.pop_back();
-    
-    // verificar se o vetor está vazio - método .empty()
-    
-    if(cartas.empty()){
-        cout << "Vetor vazio" << endl;
-    } else {
-        cout << "O vetor possui " << cartas.size() << " elementos." << endl;
-    }
-    
-    // limpar todos os elementos do vetor - método .clear()
-    
-    cartas.clear();
-    
-    // verificar se o vetor está vazio após limpar - método .empty()
-    
-    if(cartas.empty()){
-        cout << "Vetor vazio após o clear" << endl;
-    }
-    
     return 0;
 }
