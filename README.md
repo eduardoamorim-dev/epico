@@ -48,12 +48,6 @@
     <img width="25" height="25" src="https://www.beecrowd.com.br/judge/favicon.ico?1635097036"> BEECROWD
   </h3>
 </div>
-
-<details>
-  <summary><strong>CATEGORIAS</strong></summary>
-  <details>
-    <summary><strong>Iniciante</strong></summary>
-    <br />
     <div align="left">
       <table border="1">
         <tr>
@@ -177,7 +171,4 @@
         </tr>
       </table>
     </div>
-  </details>
-</details>
-
 
