@@ -169,6 +169,30 @@
             </a>
           </td>
         </tr>
+        <tr>
+          <td align="left">1059 - Números Pares</td>
+          <td align="center">
+            <a href="https://judge.beecrowd.com/pt/problems/view/1059" target="_blank">
+              <img src="https://github.com/eduardoamorim-dev/code-challenges/assets/86995782/7b2ab23c-e012-4d3e-bf42-5d717b882fdd" width="38px" />
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td align="left">1095 - Sequencia IJ 1</td>
+          <td align="center">
+            <a href="https://judge.beecrowd.com/pt/problems/view/1095" target="_blank">
+              <img src="https://github.com/eduardoamorim-dev/code-challenges/assets/86995782/7b2ab23c-e012-4d3e-bf42-5d717b882fdd" width="38px" />
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td align="left">1134 - Tipo de Combustível</td>
+          <td align="center">
+            <a href="https://judge.beecrowd.com/pt/problems/view/1134" target="_blank">
+              <img src="https://github.com/eduardoamorim-dev/code-challenges/assets/86995782/7b2ab23c-e012-4d3e-bf42-5d717b882fdd" width="38px" />
+            </a>
+          </td>
+        </tr>
       </table>
     </div>
 
