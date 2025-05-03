@@ -1,78 +1,73 @@
 #include <iostream>
-#include <string> // Necessário para o uso de `string`
-
 using namespace std;
 
 int main() {
-    // Declaração das variáveis
-    int idade;                  // Número inteiro padrão
-    short int ano_curto;        // Número inteiro menor
-    long int populacao_cidade;  // Número inteiro maior
-    long long int populacao_mundo; // Número inteiro muito grande
-
-    float altura;               // Número decimal com precisão simples
-    double preco;               // Número decimal com precisão dupla
-    long double distancia;      // Número decimal com precisão maior
-
-    char inicial;               // Um único caractere
-
-    bool maior_de_idade;        // Valor lógico, true ou false
-
-    string nome;                // Uma sequência de caracteres (texto)
-
-    // Constante
-    const double PI = 3.14159;  // Constante que não pode ser alterada
-
-    // Solicitando e recebendo valores do usuário
-    cout << "Digite seu nome: ";
-    getline(cin, nome); // `getline` permite ler uma linha inteira, incluindo espaços
-
-    cout << "Digite sua idade: ";
-    cin >> idade; // Lê um valor inteiro
-
-    cout << "Digite o ano atual (short int): ";
-    cin >> ano_curto; // Lê um valor de tipo `short int`
-
-    cout << "Digite a população estimada da sua cidade: ";
-    cin >> populacao_cidade; // Lê um valor de tipo `long int`
-
-    cout << "Digite a população mundial estimada: ";
-    cin >> populacao_mundo; // Lê um valor de tipo `long long int`
-
-    cout << "Digite sua altura em metros (exemplo 1.75): ";
-    cin >> altura; // Lê um valor de ponto flutuante (float)
-
-    cout << "Digite o preço de um item (exemplo 1234.56): ";
-    cin >> preco; // Lê um valor de ponto flutuante com precisão dupla (double)
-
-    cout << "Digite a distância até seu destino em metros: ";
-    cin >> distancia; // Lê um valor de ponto flutuante com precisão maior (long double)
-
-    cout << "Digite a inicial do seu nome: ";
-    cin >> inicial; // Lê um caractere
-
-    cout << "Você é maior de idade? (1 para Sim, 0 para Não): ";
-    cin >> maior_de_idade; // Lê um valor booleano (1 para true, 0 para false)
-
-    // Exibindo os valores das variáveis
-    cout << "\n--- Dados Recebidos ---" << endl;
-    cout << "Nome: " << nome << endl;
+    // Declaração de variáveis sem valores iniciais
+    int idade;              // Variável inteira
+    float altura;           // Variável decimal
+    char letra;             // Variável caractere
+    string nome;            // Variável texto
+    bool ligado;            // Variável booleana (verdadeiro/falso)
+    
+    // Atribuindo valores às variáveis
+    idade = 30;
+    altura = 1.80;
+    letra = 'A';
+    nome = "Carlos";
+    ligado = false;
+    
+    // Exibindo os valores
+    cout << "=== Valores Iniciais ===" << endl;
     cout << "Idade: " << idade << endl;
-    cout << "Ano Curto: " << ano_curto << endl;
-    cout << "População da Cidade: " << populacao_cidade << endl;
-    cout << "População Mundial: " << populacao_mundo << endl;
-
-    cout << "Altura: " << altura << " metros" << endl;
-    cout << "Preço: " << preco << " reais" << endl;
-    cout << "Distância: " << distancia << " metros" << endl;
-
-    cout << "Inicial do Nome: " << inicial << endl;
-    cout << "Maior de Idade: " << (maior_de_idade ? "Sim" : "Não") << endl;
-
-    cout << "Valor de PI: " << PI << endl;
-
+    cout << "Altura: " << altura << endl;
+    cout << "Letra: " << letra << endl;
+    cout << "Nome: " << nome << endl;
+    cout << "ligado: " << ligado << endl;
+    
+    // Diferentes formas de entrada de dados
+    cout << "\n=== Entrada de Dados ===" << endl;
+    
+    // Entrada de inteiro
+    cout << "Digite sua idade: ";
+    cin >> idade;
+    
+    // Entrada de float
+    cout << "Digite sua altura: ";
+    cin >> altura;
+    
+    // Entrada de char
+    cout << "Digite uma letra: ";
+    cin >> letra;
+    
+    // Entrada de bool (0 para false, 1 para true)
+    cout << "Você é ligado? (0=não, 1=sim): ";
+    cin >> ligado;
+    
+    // Limpando o buffer para entrada de string
+    cin.ignore();
+    
+    // Entrada de string (uma palavra)
+    cout << "Digite seu primeiro nome: ";
+    cin >> nome;
+    
+    // Limpando o buffer novamente
+    cin.ignore();
+    
+    // Entrada de string com espaços (nome completo)
+    string nomeCompleto;
+    cout << "Digite seu nome completo: ";
+    getline(cin, nomeCompleto);
+    
+    // Exibindo os novos valores
+    cout << "\n=== Valores Digitados ===" << endl;
+    cout << "Idade: " << idade << endl;
+    cout << "Altura: " << altura << endl;
+    cout << "Letra: " << letra << endl;
+    cout << "Nome: " << nome << endl;
+    cout << "Nome Completo: " << nomeCompleto << endl;
+    cout << "ligado: " << ligado << endl;
+    
     return 0;
 }
 
 // https://2linguagensprogsi.webnode.page/linguagens/linguagem-c-with-classes/tipos-de-dados-de-c-/
-
