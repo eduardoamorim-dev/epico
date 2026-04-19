@@ -45,7 +45,7 @@
 
 <div align="left">
   <h3>
-    <img width="25" height="25" src="https://www.beecrowd.com.br/judge/favicon.ico?1635097036"> BEECROWD
+    <img width="200" height="32" alt="Main-Logo-beecrowd-H" src="https://github.com/user-attachments/assets/c61b8598-8816-42cc-92a1-0c2423b1b2bf" /> 
   </h3>
 </div>
     <div align="left">
